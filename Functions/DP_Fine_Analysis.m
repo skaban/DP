@@ -49,7 +49,8 @@ x0=[2000; 50];
 N_ICE_opt=zeros(1,DP_SIM_DATA.CYCLE.T);
 Treq_ICE_opt=zeros(1,DP_SIM_DATA.CYCLE.T);
 fuel_power_in=zeros(1,DP_SIM_DATA.CYCLE.T);
-options = optimset('Algorithm','interior-point','TolFun',1e-2,'MaxFunEvals',10000,'MaxIter',10000,'Tolx',1e-6,'TolCon',1e-2,'Display','off');
+%options = optimset('Algorithm','interior-point','TolFun',1e-2,'MaxFunEvals',10000,'MaxIter',10000,'Tolx',1e-6,'TolCon',1e-2,'Display','off');
+options = optimset('TolFun',1e-2,'MaxFunEvals',10000,'MaxIter',10000,'Tolx',1e-6,'TolCon',1e-2,'Display','off');
 
 %ICE data
 %regular engine speed and torque indices

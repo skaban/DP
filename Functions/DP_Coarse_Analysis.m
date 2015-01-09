@@ -81,10 +81,15 @@ Fuel_Used_coarse=zeros(1,DP_SIM_DATA.CYCLE.T);
 disp('Calculating Optimal Power Flows...');
 for k=1:1:(DP_SIM_DATA.CYCLE.T-1) %from the 2nd point to the end of the simulation...
     
-    if (k==1)
+    if (k==1)&&((DP_SIM_DATA.CYCLE.T-1)-k)>=100
         clear E_cost P_RTM P_gen
         disp('Loading Data Segment 1...');
         load('DP_storage/DPtemp101');
+        clear E_cost
+    elseif (k==1)&&((DP_SIM_DATA.CYCLE.T-1)-k)<100
+        clear E_cost P_RTM P_gen
+        disp('Loading Final Data Segment...');
+        load('DP_storage/DPtempfinal');
         clear E_cost
     elseif (mod(k,101)==1)&&((DP_SIM_DATA.CYCLE.T-1)-k)>=100
         clear E_cost P_RTM P_gen
@@ -99,6 +104,7 @@ for k=1:1:(DP_SIM_DATA.CYCLE.T-1) %from the 2nd point to the end of the simulati
         load('DP_storage/DPtempfinal');
         clear E_cost
     else
+        
     end
     
     if (k==1)
